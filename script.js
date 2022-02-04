@@ -1,78 +1,104 @@
-const list = {
-    "complete a practical task": "Done",
-    "order vitamins": "In Progress",
-    "to wash the dishes": "To Do",
+const STATUS = {
+    TO_DO: 'To Do',
+    IN_PROGRESS: 'In Progress',
+    DONE: 'Done',
 };
 
-function changeStatus(task, status) {
-    list[task] = status;
+const DEFAULT_STATUS = STATUS.TO_DO;
+
+const PRIORITY = {
+    LOW: 'low',
+    HIGH: 'high',
+};
+
+const DEFAULT_PRIORITY = PRIORITY.LOW
+
+const list = [
+    { name: 'create a post', status: STATUS.IN_PROGRESS, priority: PRIORITY.LOW },
+    { name: 'test', status: STATUS.DONE, priority: PRIORITY.HIGH }
+]
+
+let newList;
+
+function changeStatus(name, status) {
+    findIndex(name);
+    let priority = list[index].priority;
+    list.splice(index, 1, { name, status, priority });
 }
 
-function addTask(task) {
-    list[task] = "To Do";
+function changePriority(name, priority) {
+    findIndex(name);
+    let status = list[index].status;
+    list.splice(index, 1, { name, status, priority });
 }
 
-function deleteTask(task) {
-    delete list[task];
+function addTask(name) {
+    list.push({ name, status: DEFAULT_STATUS, priority: DEFAULT_PRIORITY });
 }
 
-function showList() {
+function deleteTask(name) {
+    findIndex(name);
+    list.splice(index, 1);
+}
 
-    console.log('Todo:');
-    let counterToDo = 0;
-    for (let key in list) {
-        if (list[key] === "To Do") {
-            counterToDo++;
-        }
+function showBy(style) {
+    if (style === 'status') {
+        console.log(STATUS.TO_DO + ':');
+        createNewListByStatus(STATUS.TO_DO);
+        showName(newList);
+
+        console.log(STATUS.IN_PROGRESS + ':');
+        createNewListByStatus(STATUS.IN_PROGRESS);
+        showName(newList);
+
+        console.log(STATUS.DONE + ':');
+        createNewListByStatus(STATUS.DONE);
+        showName(newList);
     }
-    if (counterToDo === 0) {
+
+    if (style === 'priority') {
+        console.log(PRIORITY.HIGH + ':');
+        createNewListByPriority(PRIORITY.HIGH);
+        showName(newList);
+
+        console.log(PRIORITY.LOW + ':');
+        createNewListByPriority(PRIORITY.LOW);
+        showName(newList);
+
+    }
+}
+
+function findIndex(name) {
+    index = (list.findIndex(function (task) {
+        return task.name === name
+    }));
+};
+
+function createNewListByStatus(status) {
+    newList = list.filter(function (task) {
+        return task.status === status
+    });
+}
+
+function createNewListByPriority(priority) {
+    newList = list.filter(function (task) {
+        return task.priority === priority
+    });
+}
+
+function showName(newList) {
+    if (newList.length === 0) {
         console.log('-');
     } else {
-        for (let key in list) {
-            if (list[key] === "To Do") {
-                console.log('"' + key + '"');
-            }
-        }
-    }
-
-    console.log('In Progress:');
-    let counterInProgress = 0;
-    for (key in list) {
-        if (list[key] === "In Progress") {
-            counterInProgress++;
-        }
-    }
-    if (counterInProgress === 0) {
-        console.log('-');
-    } else {
-        for (key in list) {
-            if (list[key] === "In Progress") {
-                console.log('"' + key + '"');
-            }
-        }
-    }
-
-    console.log('Done:');
-    let counterDone = 0;
-    for (key in list) {
-        if (list[key] === "Done") {
-            counterDone++;
-        }
-    }
-    if (counterDone === 0) {
-        console.log('-');
-    } else {
-        for (key in list) {
-            if (list[key] === "Done") {
-                console.log('"' + key + '"');
-            }
+        for (let i = 0; i <= (newList.length - 1); i++) {
+            console.log(newList[i].name);
         }
     }
 }
 
-addTask('homework');
-addTask ('bake cookies');
-deleteTask('order vitamins');
-changeStatus ('bake cookies', "Done");
-changeStatus ('homework', "Done");
-showList();
+changeStatus('create a post', 'Done');
+addTask('cleaning')
+deleteTask('test')
+showBy('status')
+//changePriority('cleaning', 'high')
+//showBy('priority')
