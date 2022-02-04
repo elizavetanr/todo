@@ -88,13 +88,13 @@ function createNewListByPriority(priority) {
 
 function showName(newList) {
     if (newList.length === 0) {
-        console.log('-');
+      console.log('-');
     } else {
-        for (let i = 0; i <= (newList.length - 1); i++) {
-            console.log(newList[i].name);
-        }
+      newList.forEach(function func(item) {
+        console.log(item.name)
+      });
     }
-}
+  }
 
 changeStatus('create a post', 'Done');
 addTask('cleaning')
