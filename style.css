@@ -1,0 +1,112 @@
+* {
+    color: black;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    line-height: 21px;
+    border: none;
+}
+
+body {
+    background-color: #E5E5E5;
+    padding: 0;
+    margin: 0;
+}
+.to-do-list {
+    width: 476px;
+    background: #FFFFFF;
+    padding-top: 25px;
+}
+.tasks-form {
+    border: 1px solid #989898;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+}
+.input-task {
+color: #BBBBBB;
+}
+input {
+    width: 418px;
+}
+.add-icon {
+    width: 18.01px;
+    height: 18.04px;
+
+}
+.add-task {
+    width: 18.01px;
+    height: 18.04px;
+    background-color: #FFFFFF;
+}
+.text-high {
+    margin-bottom: 12px;
+    margin-right: 216px;
+    margin-left: 217px;
+}
+.text-low {
+    margin-bottom: 12px;
+    margin-right: 219px;
+    margin-left: 219px;
+}
+input[type=checkbox] {
+    width: 15px;
+    /*display: none;*/
+}
+.task-high-list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 460px;
+    border: 1px solid #989898;
+    border-radius: 6px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+.task-low-list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 460px;
+    border: 1px solid #989898;
+    border-radius: 6px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+.del-icon {
+    width: 15px;
+    height: 15px;
+}
+.del-high-task {
+    background-color: #FFFFFF;
+}
+.del-low-task {
+    background-color: #FFFFFF;
+}
+
+.done-high-task {
+    background-color: #F4F4F4;
+}
+.del-done-high-task {
+    background-color: #F4F4F4;
+}
+.done-low-task {
+    background-color: #F4F4F4;
+}
+.del-done-low-task {
+    background-color: #F4F4F4;
+}
